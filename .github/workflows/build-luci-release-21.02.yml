@@ -34,7 +34,7 @@ jobs:
             PACKAGES=$(echo "$PACKAGES" | sed 's/$(cat packages_do_not_build)//g')
           fi
           PACKAGES=$PACKAGES
-          echo "PACKAGES=$PACKAGES" >> $GITHUB_ENV
+          echo "PACKAGES=${PACKAGES}" >> $GITHUB_ENV
 
       - name: Build
         uses: ekkog/gh-action-sdk@master
