@@ -4,13 +4,12 @@ on:
     branches: main
     paths:
       - '.github/workflows/build-luci-release-21.02.yml'
-      - 'patch.sh'
-      - '**'
-      - '!config.json'
-      - '!**/README*'
-      - '!**/.gitignore'
-      - '!**/LICENSE'
-      - '!**/LICENSES'
+      - 'packages/**'
+      - '!packages/**/github/workflows/**'
+      - '!packages/**/README*'
+      - '!packages/**/.gitignore'
+      - '!packages/**/LICENSE'
+      - '!packages/**/LICENSES'
 
 jobs:
   buildpkg:

@@ -3,14 +3,13 @@ on:
   push:
     branches: main
     paths:
-      - '.github/workflows/build-luci-release-22.03.yml'
-      - 'patch.sh'
-      - '**'
-      - '!config.json'
-      - '!**/README*'
-      - '!**/.gitignore'
-      - '!**/LICENSE'
-      - '!**/LICENSES'
+      - '.github/workflows/build-luci-release-21.02.yml'
+      - 'packages/**'
+      - '!packages/**/github/workflows/**'
+      - '!packages/**/README*'
+      - '!packages/**/.gitignore'
+      - '!packages/**/LICENSE'
+      - '!packages/**/LICENSES'
 
 jobs:
   buildpkg:
@@ -60,7 +59,7 @@ jobs:
           ARCH=$(echo $ARCH | sed 's/-v/-/g')
           VERSION=$(echo $ARCH | cut -d'-' -f2 | cut -d'.' -f1-2)
           BRANCH="luci/$VERSION"
-          cd bin/*/action
+          cd bin/packages/*/action
           sudo chown runner:runner -R .
           git init
           git config user.name "bot"
