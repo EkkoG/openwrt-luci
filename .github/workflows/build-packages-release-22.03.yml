@@ -40,6 +40,14 @@ jobs:
           IGNORE_ERRORS: 1
           NO_SHFMT_CHECK: 1
           V: 99
+          EXTRA_FEEDS: |
+            src-git|ekko_packages|https://github.com/EkkoG/openwrt-packages.git
+          PACKAGES: |
+            luci-app-natmap
+            luci-app-mosdns
+            luci-theme-argon
+            luci-app-openclash
+            luci-app-temp-status
 
       - name: List files
         run: |
