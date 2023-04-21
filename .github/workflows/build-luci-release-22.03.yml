@@ -30,6 +30,11 @@ jobs:
       - name: Prepare feeds
         run: |
           ./patch.sh ${{ matrix.arch }}
+          PACKAGES=$(ls packages | sed 's/\///g')
+          if [ -f "packages_do_not_build" ]; then
+            PACKAGES=$(echo $PACKAGES | sed 's/$(cat packages_do_not_build)//g')
+          fi
+          echo "PACKAGES=$PACKAGES" > $GITHUB_ENV
 
       - name: Build
         uses: ekkog/gh-action-sdk@master
@@ -42,12 +47,7 @@ jobs:
           V: 99
           EXTRA_FEEDS: |
             src-git|ekko_packages|https://github.com/EkkoG/openwrt-packages.git
-          PACKAGES: |
-            luci-app-natmap
-            luci-app-mosdns
-            luci-theme-argon
-            luci-app-openclash
-            luci-app-temp-status
+          PACKAGES: ${{ env.PACKAGES }}
 
       - name: List files
         run: |
@@ -67,4 +67,4 @@ jobs:
           git config user.email "bot@github.com"
           git add .
           git commit -m "$(TZ='Asia/Shanghai' date +@%Y%m%d)"
-          git push --force --quiet "https://x-access-token:${{ secrets.DIST_PUSH_TOKEN }}@github.com/EkkoG/openwrt-dist" HEAD:$BRANCH
+          git push --force --quiet "https://x-access-token:${{ secrets.PUSH_TOKEN }}@github.com/$GITHUB_REPOSITORY" HEAD:$BRANCH
