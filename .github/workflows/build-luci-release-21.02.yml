@@ -53,7 +53,7 @@ jobs:
         run: |
           ARCH=$(echo $ARCH | sed 's/-v/-/g')
           VERSION=$(echo $ARCH | cut -d'-' -f2 | cut -d'.' -f1-2)
-          BRANCH="luci/$VERSION"
+          BRANCH="$VERSION"
           cd bin/packages/*/action
           sudo chown runner:runner -R .
           git init
