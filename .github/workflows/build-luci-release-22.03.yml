@@ -32,7 +32,7 @@ jobs:
           ./patch.sh ${{ matrix.arch }}
           PACKAGES=$(ls packages | sed 's/\///g')
           if [ -f "packages_do_not_build" ]; then
-            PACKAGES=$(echo $PACKAGES | sed 's/$(cat packages_do_not_build)//g')
+            PACKAGES=$(echo "$PACKAGES" | sed 's/$(cat packages_do_not_build)//g')
           fi
           echo "PACKAGES=$PACKAGES" > $GITHUB_ENV
 
