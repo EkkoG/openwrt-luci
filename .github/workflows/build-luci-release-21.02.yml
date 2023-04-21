@@ -36,6 +36,8 @@ jobs:
           PACKAGES=$PACKAGES
           echo "PACKAGES=${PACKAGES}" >> $GITHUB_ENV
 
+          echo "PACKAGES=${{ env.PACKAGES }}"
+
       - name: Build
         uses: ekkog/gh-action-sdk@master
         env:
