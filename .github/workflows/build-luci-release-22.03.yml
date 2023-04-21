@@ -30,11 +30,8 @@ jobs:
       - name: Prepare feeds
         run: |
           ./patch.sh ${{ matrix.arch }}
-          PACKAGES=$(ls packages | sed 's/\///g')
-          if [ -f "packages_do_not_build" ]; then
-            PACKAGES=$(echo "$PACKAGES" | sed 's/$(cat packages_do_not_build)//g')
-          fi
-          echo "PACKAGES=$PACKAGES" > $GITHUB_ENV
+          PACKAGES=$(ls packages | sed 's/\///g' | tr '\n' ' ')
+          echo "PACKAGES=${PACKAGES}" >> $GITHUB_ENV
 
       - name: Build
         uses: ekkog/gh-action-sdk@master
