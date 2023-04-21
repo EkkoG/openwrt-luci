@@ -4,6 +4,7 @@ on:
     branches: main
     paths:
       - '.github/workflows/build-luci-release-22.03.yml'
+      - 'patch.sh'
       - 'packages/**'
       - '!packages/**/github/workflows/**'
       - '!packages/**/README*'
