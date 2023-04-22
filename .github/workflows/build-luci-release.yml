@@ -34,7 +34,7 @@ jobs:
           echo "PACKAGES=${PACKAGES}" >> $GITHUB_ENV
 
       - name: Build
-        uses: ekkog/gh-action-sdk@master
+        uses: openwrt/gh-action-sdk@main
         env:
           ARCH: ${{ matrix.arch }}
           KEY_BUILD: ${{ secrets.KEY_BUILD }}
