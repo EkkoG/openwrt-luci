@@ -15,10 +15,10 @@ sed_wrapper '/define Package\/\$(PKG_NAME)\/config/,/endef/d' packages/luci-app-
 dep=$(grep 'DEPENDS' packages/luci-app-openclash/Makefile)
 # remove the last \
 dep=${dep%\\}
-if [[ $1 =~ '22.03'* ]]; then
-    dep="$dep +kmod-nft-tproxy"
-else
+if [[ $1 =~ '21.02'* ]]; then
     dep="$dep +ip6tables-mod-nat +iptables-mod-extra +iptables-mod-tproxy"
+else
+    dep="$dep +kmod-nft-tproxy"
 fi
 sed_wrapper '/DEPENDS/c\ '"$dep"' \\' packages/luci-app-openclash/Makefile
 
