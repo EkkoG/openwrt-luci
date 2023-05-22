@@ -21,6 +21,7 @@ jobs:
         arch:
           - x86_64-v21.02.6
           - x86_64-v22.03.4
+          - x86-64-23.05-SNAPSHOT
           - x86_64-SNAPSHOT
 
     steps:
