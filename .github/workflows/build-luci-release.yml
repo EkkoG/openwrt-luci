@@ -41,6 +41,7 @@ jobs:
         env:
           ARCH: ${{ matrix.arch }}
           KEY_BUILD: ${{ secrets.KEY_BUILD }}
+          CONTAINER: immortalwrt/sdk
           INDEX: 1
           IGNORE_ERRORS: 1
           EXTRA_FEEDS: |
