@@ -21,7 +21,7 @@ jobs:
         arch:
           - x86_64-v21.02.6
           - x86_64-v22.03.4
-          - x86-64-23.05-SNAPSHOT
+          - x86_64-23.05-SNAPSHOT
           - x86_64-SNAPSHOT
 
     steps:
@@ -59,7 +59,7 @@ jobs:
           VERSION=$(echo $ARCH | cut -d'-' -f2 | cut -d'.' -f1-2)
           BRANCH="$VERSION"
           if [[ $ARCH =~ "SNAPSHOT" ]]; then
-              BRANCH="SNAPSHOT"
+              BRANCH=$(echo $ARCH | cut -d'-' -f2-3)
           fi
           cd bin/packages/*/action
           sudo chown runner:runner -R .
