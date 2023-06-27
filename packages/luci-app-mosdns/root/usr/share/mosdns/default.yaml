@@ -2,6 +2,11 @@ log:
   level: log_level
   file: "log_file"
 
+api:
+  http: "0.0.0.0:api_port"
+
+include: []
+
 plugins:
   - tag: geosite_cn
     type: domain_set
@@ -39,6 +44,12 @@ plugins:
       files:
         - "/etc/mosdns/rule/greylist.txt"
 
+  - tag: ddnslist
+    type: domain_set
+    args:
+      files:
+        - "/etc/mosdns/rule/ddnslist.txt"
+
   - tag: hosts
     type: hosts
     args:
@@ -63,13 +74,7 @@ plugins:
       files:
         - "/etc/mosdns/rule/local-ptr.txt"
 
-  - tag: sp_low
-    type: domain_set
-    args:
-      files:
-        - "/usr/share/mosdns/sp_low.tdata"
-
-  - tag: cache
+  - tag: lazy_cache
     type: cache
     args:
       size: cache_size
@@ -78,12 +83,14 @@ plugins:
   - tag: forward_local
     type: forward
     args:
+      concurrent: concurrent_num
       upstreams:
         - addr: local_dns
 
   - tag: forward_remote
     type: forward
     args:
+      concurrent: concurrent_num
       upstreams:
         - addr: remote_dns
 
@@ -92,23 +99,30 @@ plugins:
     args:
       - exec: ttl minimal_ttl_custom-maximum_ttl_custom
 
+  - tag: modify_ddns_ttl
+    type: sequence
+    args:
+      - exec: ttl 5-5
+
   - tag: local_sequence
     type: sequence
     args:
-      - exec: metrics_collector $forward_local
       - exec: $forward_local
 
   - tag: remote_sequence
     type: sequence
     args:
       - exec: prefer_ipv4
-      - exec: metrics_collector $forward_remote
+      - exec: ecs_remote
       - exec: $forward_remote
 
   - tag: has_resp_sequence
     type: sequence
     args:
-      - exec: $modify_ttl
+      - matches: qname $ddnslist
+        exec: $modify_ddns_ttl
+      - matches: "!qname $ddnslist"
+        exec: $modify_ttl
       - matches: has_resp
         exec: accept
 
@@ -116,15 +130,13 @@ plugins:
     type: sequence
     args:
       - exec: $local_sequence
-      - matches: resp_ip $geoip_cn
-        exec: accept
-      - exec: reject
+      - matches: "!resp_ip $geoip_cn"
+        exec: drop_resp
 
   - tag: query_is_remote
     type: sequence
     args:
       - exec: $remote_sequence
-      - exec: accept
 
   - tag: fallback
     type: fallback
@@ -132,7 +144,13 @@ plugins:
       primary: query_is_local_ip
       secondary: query_is_remote
       threshold: 500
-      always_standby: false
+      always_standby: true
+
+  - tag: query_is_ddns_domain
+    type: sequence
+    args:
+      - matches: qname $ddnslist
+        exec: $local_sequence
 
   - tag: query_is_local_domain
     type: sequence
@@ -151,7 +169,6 @@ plugins:
     args:
       - matches: qname $whitelist
         exec: $local_sequence
-      - exec: jump has_resp_sequence
 
   - tag: query_is_greylist_domain
     type: sequence
@@ -166,8 +183,6 @@ plugins:
         exec: reject 3
       - matches: qname $adlist
         exec: reject 3
-      - matches: qname $sp_low
-        exec: reject 3
       - matches:
         - qtype 12
         - qname $local_ptr
@@ -180,11 +195,19 @@ plugins:
     args:
       - exec: $hosts
       - exec: jump has_resp_sequence
+      - matches:
+        - "!qname $ddnslist"
+        - "!qname $blocklist"
+        - "!qname $adlist"
+        - "!qname $local_ptr"
+        exec: $lazy_cache
       - exec: $redirect
       - exec: jump has_resp_sequence
+      - exec: $query_is_ddns_domain
+      - exec: jump has_resp_sequence
       - exec: $query_is_whitelist_domain
+      - exec: jump has_resp_sequence
       - exec: $query_is_reject_domain
-      - exec: $cache
       - exec: jump has_resp_sequence
       - exec: $query_is_greylist_domain
       - exec: jump has_resp_sequence
