@@ -1,0 +1,298 @@
+Package: luci-app-mosdns
+Version: 1.5.7
+Depends: libc, mosdns, jsonfilter, luci-compat, curl, v2ray-geoip, v2ray-geosite, v2dat, luci-lua-runtime
+Source: /feed/packages/luci-app-mosdns
+SourceName: luci-app-mosdns
+Section: luci
+SourceDateEpoch: 1693354943
+Maintainer: OpenWrt LuCI community
+Architecture: all
+Installed-Size: 13494
+Filename: luci-app-mosdns_1.5.7_all.ipk
+Size: 14368
+SHA256sum: cb5b8ccd71e58ab311fcd96cb7fa92cd03a88819ddc5c7a53f6648479223e88b
+Description:  LuCI Support for mosdns
+
+Package: luci-app-natmap
+Version: git-23.158.36734-500aeea
+Depends: libc, natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-app-natmap
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: OpenWrt LuCI community
+Architecture: all
+Installed-Size: 2361
+Filename: luci-app-natmap_git-23.158.36734-500aeea_all.ipk
+Size: 3202
+SHA256sum: ed2b09232aec601a3247f7798d77a4226ff9bed9f433a7fa093d6cf6087f3b88
+Description:  LuCI Support for natmap
+
+Package: luci-app-openclash
+Version: 0.45.141-beta
+Depends: libc, dnsmasq-full, coreutils, coreutils-nohup, bash, curl, ca-certificates, ipset, ip-full, kmod-nft-tproxy, libcap, libcap-bin, ruby, ruby-yaml, kmod-tun, unzip
+Source: /feed/packages/luci-app-openclash
+SourceName: luci-app-openclash
+Section: opt
+SourceDateEpoch: 1692706634
+Maintainer: vernesong
+Architecture: all
+Installed-Size: 6913866
+Filename: luci-app-openclash_0.45.141-beta_all.ipk
+Size: 6639613
+SHA256sum: 2659212c88c702b6718708dc67e84a8d100a492e3ddf84f6750b45db26e054e0
+Description:  A LuCI support for clash
+
+Package: luci-app-temp-status
+Version: 0.3-5
+Depends: libc, lua, luci-lib-nixio, luci-lib-jsonc
+Source: /feed/packages/luci-app-temp-status
+SourceName: luci-app-temp-status
+License: MIT
+Section: luci
+SourceDateEpoch: 1686420941
+Maintainer: OpenWrt LuCI community
+Architecture: all
+Installed-Size: 2021
+Filename: luci-app-temp-status_0.3-5_all.ipk
+Size: 2866
+SHA256sum: 9bad97edbd00e807e9d9c4d74f341023d56f7e24fb915ca9fcf2fd0945d9a62b
+Description:  Temperature sensors data for the LuCI status page
+
+Package: luci-i18n-mosdns-zh-cn
+Version: git-23.242.01343-231f8a2
+Depends: libc, luci-app-mosdns
+Source: /feed/packages/luci-app-mosdns
+SourceName: luci-i18n-mosdns-zh-cn
+Section: luci
+SourceDateEpoch: 1693354943
+Architecture: all
+Installed-Size: 3255
+Filename: luci-i18n-mosdns-zh-cn_git-23.242.01343-231f8a2_all.ipk
+Size: 4063
+SHA256sum: 9e008cdb49420883f20302adae74bcb5a2343feab3bd25f357bfbf3d66e595bd
+Description:  Translation for luci-app-mosdns - 简体中文 (Chinese Simplified)
+
+Package: luci-i18n-natmap-cs
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-cs
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 314
+Filename: luci-i18n-natmap-cs_git-23.111.56610-3107fbf_all.ipk
+Size: 1170
+SHA256sum: a8f3072bc595fba387afe105d99db48398738ee400945ee81f99c6c04e72c9d2
+Description:  Translation for luci-app-natmap - Čeština (Czech)
+
+Package: luci-i18n-natmap-da
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-da
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 696
+Filename: luci-i18n-natmap-da_git-23.111.56610-3107fbf_all.ipk
+Size: 1543
+SHA256sum: 5332fb526ded491d4f55dbd5ea7f41602f09b846f6aa1442a693cb3386540d45
+Description:  Translation for luci-app-natmap - Dansk (Danish)
+
+Package: luci-i18n-natmap-de
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-de
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 806
+Filename: luci-i18n-natmap-de_git-23.111.56610-3107fbf_all.ipk
+Size: 1652
+SHA256sum: fc07a9205a90c48e53d868c60f0567b117ad91e1a0a57573972471edc5aba9be
+Description:  Translation for luci-app-natmap - Deutsch (German)
+
+Package: luci-i18n-natmap-es
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-es
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 811
+Filename: luci-i18n-natmap-es_git-23.111.56610-3107fbf_all.ipk
+Size: 1667
+SHA256sum: c80c79338549caa1f836d6174b59b0b2aafc58c76013acf771cd5b8b75b974b9
+Description:  Translation for luci-app-natmap - Español (Spanish)
+
+Package: luci-i18n-natmap-it
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-it
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 535
+Filename: luci-i18n-natmap-it_git-23.111.56610-3107fbf_all.ipk
+Size: 1383
+SHA256sum: 2852e25ecdc575e1ef3de42e7ff53ea07b1a2b37cc4454f3e2642abc0e5e6857
+Description:  Translation for luci-app-natmap - Italiano (Italian)
+
+Package: luci-i18n-natmap-pl
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-pl
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 858
+Filename: luci-i18n-natmap-pl_git-23.111.56610-3107fbf_all.ipk
+Size: 1715
+SHA256sum: 1835ceddb60e19e27afaa3784f4f022cb145f469e7e6ad519bd27f85863e0ca6
+Description:  Translation for luci-app-natmap - Polski (Polish)
+
+Package: luci-i18n-natmap-pt-br
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-pt-br
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 817
+Filename: luci-i18n-natmap-pt-br_git-23.111.56610-3107fbf_all.ipk
+Size: 1691
+SHA256sum: 80343dbff42c19b027fc994db8841fcb39dc6aa05092e181603d546a6523bfb9
+Description:  Translation for luci-app-natmap - Português do Brasil (Brazilian Portuguese)
+
+Package: luci-i18n-natmap-ru
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-ru
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 936
+Filename: luci-i18n-natmap-ru_git-23.111.56610-3107fbf_all.ipk
+Size: 1799
+SHA256sum: 918a2d470f3b8a96db19c02e0a8e302a956a63374456d8c54fbb465924884ba3
+Description:  Translation for luci-app-natmap - Русский (Russian)
+
+Package: luci-i18n-natmap-sv
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-sv
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 308
+Filename: luci-i18n-natmap-sv_git-23.111.56610-3107fbf_all.ipk
+Size: 1155
+SHA256sum: ad831fb5cebd381e346f3a911d09b8f9e61d31e9e27c4c63d23f7a91f244c04f
+Description:  Translation for luci-app-natmap - Svenska (Swedish)
+
+Package: luci-i18n-natmap-tr
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-tr
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 313
+Filename: luci-i18n-natmap-tr_git-23.111.56610-3107fbf_all.ipk
+Size: 1167
+SHA256sum: 3b9b8363f91eb296c89a8388bd66d2ddfb7af1309d5489912c97bf1a05f2acc6
+Description:  Translation for luci-app-natmap - Türkçe (Turkish)
+
+Package: luci-i18n-natmap-zh-cn
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-zh-cn
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 816
+Filename: luci-i18n-natmap-zh-cn_git-23.111.56610-3107fbf_all.ipk
+Size: 1707
+SHA256sum: 5e658e2defdf37839e4891ce5e41dba210cfceb304987fa68c70719a5b82aacc
+Description:  Translation for luci-app-natmap - 简体中文 (Chinese Simplified)
+
+Package: luci-i18n-natmap-zh-tw
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-natmap
+Source: /feed/packages/luci-app-natmap
+SourceName: luci-i18n-natmap-zh-tw
+License: Apache-2.0
+Section: luci
+SourceDateEpoch: 1686132734
+Maintainer: Richard Yu <yurichard3839@gmail.com>
+Architecture: all
+Installed-Size: 828
+Filename: luci-i18n-natmap-zh-tw_git-23.111.56610-3107fbf_all.ipk
+Size: 1718
+SHA256sum: 44c601657cfb5efcf8cd489f05d5fa2713018fd1158d7bb7378b4476c457eb5a
+Description:  Translation for luci-app-natmap - 繁體中文 (Chinese Traditional)
+
+Package: luci-i18n-temp-status-ru
+Version: git-23.111.56610-3107fbf
+Depends: libc, luci-app-temp-status
+Source: /feed/packages/luci-app-temp-status
+SourceName: luci-i18n-temp-status-ru
+License: MIT
+Section: luci
+SourceDateEpoch: 1686420941
+Architecture: all
+Installed-Size: 552
+Filename: luci-i18n-temp-status-ru_git-23.111.56610-3107fbf_all.ipk
+Size: 1377
+SHA256sum: ded2d38e5471ced0df729528502536e7c44e3c418acf21357397224d1f8df231
+Description:  Translation for luci-app-temp-status - Русский (Russian)
+
+Package: luci-theme-argon
+Version: 2.3.1
+Depends: libc, curl, jsonfilter, luci-lua-runtime
+Source: /feed/packages/luci-theme-argon
+SourceName: luci-theme-argon
+Section: luci
+SourceDateEpoch: 1686420941
+Maintainer: OpenWrt LuCI community
+Architecture: all
+Installed-Size: 336234
+Filename: luci-theme-argon_2.3.1_all.ipk
+Size: 336847
+SHA256sum: ccd2ed899dfcb6828b8ceda1bef64698feb958d33802f8c315823c06c12ee605
+Description:  Argon Theme
+
