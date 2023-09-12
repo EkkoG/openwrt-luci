@@ -50,24 +50,16 @@ jobs:
       - name: List files
         run: |
           ls -R bin/
-
-      - name: Prepare Upload
+          
+      - name: Upload feed
+        uses: Pendect/action-rsyncer@8e05ffa5c93e5d9c9b167796b26044d2c616b2b9
+        with:
+          flags: '-ahvHP'
+          options: '--delete'
+          src: 'bin/packages/*/action/'
+          dest: "${{ secrets.SF_USER }}@frs.sourceforge.net:/home/frs/project/ekko-openwrt-dist/clash/$(echo $ARCH | cut -d'-' -f2-)/"
         env:
+          DEPLOY_KEY: ${{ secrets.SF_KEY }}
           ARCH: ${{ matrix.arch }}
-        run: |
-          ARCH=$(echo $ARCH | sed 's/-v/-/g')
-          VERSION=$(echo $ARCH | cut -d'-' -f2 | cut -d'.' -f1-2)
-          BRANCH="$VERSION"
-          if [[ $ARCH =~ "23.05" ]]; then
-              BRANCH="23.05"
-          fi
-          cd bin/packages/*/action
-          sudo chown runner:runner -R .
-          git init
-          git config user.name "bot"
-          git config user.email "bot@github.com"
-          git add .
-          git commit -m "$(TZ='Asia/Shanghai' date +@%Y%m%d)"
-          git push --force --quiet "https://x-access-token:${{ secrets.PUSH_TOKEN }}@github.com/$GITHUB_REPOSITORY" HEAD:$BRANCH
 
 
