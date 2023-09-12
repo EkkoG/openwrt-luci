@@ -57,7 +57,7 @@ jobs:
           flags: '-ahvHP'
           options: '--delete'
           src: 'bin/packages/*/action/'
-          dest: "${{ secrets.SF_USER }}@frs.sourceforge.net:/home/frs/project/ekko-openwrt-dist/clash/$(echo $ARCH | cut -d'-' -f2-)/"
+          dest: "${{ secrets.SF_USER }}@frs.sourceforge.net:/home/frs/project/ekko-openwrt-dist/luci/$(echo $ARCH | cut -d'-' -f2-)/"
         env:
           DEPLOY_KEY: ${{ secrets.SF_KEY }}
           ARCH: ${{ matrix.arch }}
