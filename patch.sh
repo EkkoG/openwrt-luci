@@ -11,18 +11,20 @@ function sed_wrapper() {
 
 sed_wrapper '/luci.mk/ c\include $(TOPDIR)/feeds/luci/luci.mk' packages/luci-app-natmap/Makefile
 
-sed_wrapper '/define Package\/\$(PKG_NAME)\/config/,/endef/d' packages/luci-app-openclash/Makefile 
-dep=$(grep 'DEPENDS' packages/luci-app-openclash/Makefile)
-# remove the last \
-dep=${dep%\\}
-if [[ $1 =~ '21.02'* ]]; then
-    dep="$dep +ip6tables-mod-nat +iptables-mod-extra +iptables-mod-tproxy"
-else
-    dep="$dep +kmod-nft-tproxy"
+if [ -f packages/luci-app-openclash/Makefile ]; then
+    sed_wrapper '/define Package\/\$(PKG_NAME)\/config/,/endef/d' packages/luci-app-openclash/Makefile 
+    dep=$(grep 'DEPENDS' packages/luci-app-openclash/Makefile)
+    # remove the last \
+    dep=${dep%\\}
+    if [[ $1 =~ '21.02'* ]]; then
+        dep="$dep +ip6tables-mod-nat +iptables-mod-extra +iptables-mod-tproxy"
+    else
+        dep="$dep +kmod-nft-tproxy"
+    fi
+    sed_wrapper '/DEPENDS/c\ '"$dep"' \\' packages/luci-app-openclash/Makefile
+
+
+    wget https://testingcf.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/lite/Country.mmdb -O packages/luci-app-openclash/root/etc/openclash/Country.mmdb
+    wget https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat -O packages/luci-app-openclash/root/etc/openclash/GeoSite.dat
+    wget https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat -O packages/luci-app-openclash/root/etc/openclash/GeoIP.dat
 fi
-sed_wrapper '/DEPENDS/c\ '"$dep"' \\' packages/luci-app-openclash/Makefile
-
-
-wget https://testingcf.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/lite/Country.mmdb -O packages/luci-app-openclash/root/etc/openclash/Country.mmdb
-wget https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat -O packages/luci-app-openclash/root/etc/openclash/GeoSite.dat
-wget https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat -O packages/luci-app-openclash/root/etc/openclash/GeoIP.dat
