@@ -4,7 +4,7 @@ https://github.com/EkkoG/openwrt-luci
 ## Add with scripts
 
 ```
-sh -c "$(curl https://raw.fgit.cf/EkkoG/openwrt-dist/master/add-feed.sh)" -- luci
+sh -c "$(curl https://fastly.jsdelivr.net/gh/EkkoG/openwrt-dist@master/add-feed.sh)" -- luci
 ```
 
 ## Manual add
